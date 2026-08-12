@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>札幌美食雷達 2026｜近一年推薦</title>
+<meta name="description" content="近一年札幌美食整理：湯咖哩、拉麵、成吉思汗、海鮮、吃到飽、咖啡、甜點與夜聖代。">
+<style>
+:root {
+  --ink:#17221c; --muted:#647268; --paper:#fbfaf5; --card:#ffffff;
+  --green:#1f5b43; --green2:#2f7a5b; --gold:#d99b38; --line:#e8e8df;
+  --peach:#fff1dc; --mint:#e9f5ee; --shadow:0 10px 28px rgba(29,54,42,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;line-height:1.65}
+a{color:inherit}
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#173f31 0%,#2d6b50 60%,#e1a64a 145%);color:#fff;padding:76px 24px 58px}
+.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.08)}
+.hero:before{width:420px;height:420px;right:-150px;top:-190px}
+.hero:after{width:260px;height:260px;left:-120px;bottom:-150px}
+.wrap{max-width:1180px;margin:auto;position:relative}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;background:rgba(255,255,255,.12);padding:8px 12px;border:1px solid rgba(255,255,255,.18);border-radius:999px;font-size:13px}
+h1{font-size:clamp(38px,6vw,72px);line-height:1.08;margin:18px 0 14px;letter-spacing:-.04em}
+.hero p{max-width:760px;font-size:18px;color:rgba(255,255,255,.88);margin:0}
+.hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.hero-meta span{background:#fff;color:#234b39;border-radius:999px;padding:8px 12px;font-weight:700;font-size:13px}
+.hero-icons{position:absolute;right:24px;bottom:12px;font-size:82px;letter-spacing:4px;filter:drop-shadow(0 8px 12px rgba(0,0,0,.14));opacity:.95}
+section{padding:52px 24px}
+.section-title{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:22px}
+.section-title h2{font-size:30px;line-height:1.2;margin:0}
+.section-title p{max-width:620px;color:var(--muted);margin:0}
+.quick{background:#fff}
+.quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.quick-card{border:1px solid var(--line);border-radius:20px;padding:20px;background:linear-gradient(180deg,#fff,#fbfcf9);box-shadow:var(--shadow)}
+.quick-card .emoji{font-size:28px}
+.quick-card h3{margin:7px 0 6px;font-size:18px}
+.quick-card p{margin:0;color:var(--muted);font-size:14px}
+.quick-card b{color:var(--green)}
+.alert{margin-top:18px;border-radius:18px;padding:18px 20px;background:var(--peach);border:1px solid #f0d7aa}
+.alert strong{color:#87550f}
+.toolbar{position:sticky;top:0;z-index:9;background:rgba(251,250,245,.94);backdrop-filter:blur(12px);padding:12px 0 16px;margin-bottom:14px;border-bottom:1px solid var(--line)}
+.search{width:100%;padding:14px 16px;border:1px solid #dfe3dd;border-radius:14px;background:#fff;font-size:15px;outline:none}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.filters button{border:1px solid #dce1dc;background:#fff;border-radius:999px;padding:9px 12px;cursor:pointer;font-weight:700;color:#405047}
+.filters button.active{background:var(--green);color:#fff;border-color:var(--green)}
+.food-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.food-card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:var(--shadow);transition:.18s ease}
+.food-card:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(29,54,42,.12)}
+.card-top{display:flex;gap:14px}
+.food-icon{width:54px;height:54px;display:grid;place-items:center;background:var(--mint);border-radius:16px;font-size:28px;flex:0 0 auto}
+.card-heading h3{margin:8px 0 0;font-size:21px;line-height:1.3}
+.jp{color:var(--muted);font-size:13px;margin-top:3px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.badge{display:inline-flex;align-items:center;border-radius:999px;background:#edf5ef;color:#205840;padding:3px 8px;font-size:11px;font-weight:800}
+.badge.hot{background:#fff0d4;color:#8b5b0d}
+.badge.subtle{background:#f4f4ef;color:#687269}
+.score-row{display:flex;flex-wrap:wrap;gap:8px 14px;margin:16px 0;padding:10px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:13px;font-weight:700}
+.score-row small{font-weight:500;color:var(--muted)}
+.risk-high{color:#a3462f} .risk-mid{color:#927018} .risk-low{color:#2d744e}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.info-grid div{display:flex;flex-direction:column}
+.info-grid b{font-size:12px;color:var(--green);text-transform:uppercase;letter-spacing:.05em}
+.info-grid span{font-size:14px;color:#3f4d44}
+.map-btn{display:inline-block;margin-top:18px;text-decoration:none;background:#173f31;color:#fff;padding:10px 14px;border-radius:12px;font-weight:800;font-size:13px}
+.summer{background:linear-gradient(180deg,#fff8e9,#fff)}
+.summer-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:18px}
+.feature{border-radius:24px;padding:26px;background:#173f31;color:#fff;min-height:250px;position:relative;overflow:hidden}
+.feature.alt{background:#f7e9f0;color:#402636}
+.feature h3{font-size:26px;margin:10px 0}
+.feature p{max-width:650px}
+.feature .price{font-size:30px;font-weight:900;color:#ffd68a}
+.feature.alt .price{color:#ad416c}
+.feature .big{position:absolute;right:22px;bottom:6px;font-size:86px;opacity:.95}
+.method{background:#f0f5f1}
+.method-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.method-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px}
+.method-card h3{margin-top:0}
+.method-card ul{margin:0;padding-left:20px;color:#45544b}
+.sources{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.sources a{text-decoration:none;border:1px solid var(--line);background:#fff;border-radius:13px;padding:12px 14px;display:flex;justify-content:space-between;gap:10px}
+footer{padding:30px 24px 48px;color:var(--muted);font-size:13px}
+.hidden{display:none!important}
+@media (max-width:900px){
+  .quick-grid{grid-template-columns:repeat(2,1fr)} .food-grid,.summer-grid,.method-grid{grid-template-columns:1fr}
+  .hero-icons{display:none} .info-grid{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .quick-grid{grid-template-columns:1fr} .sources{grid-template-columns:1fr}
+  .hero{padding-top:54px} section{padding:40px 16px} .food-card{padding:18px}
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">📍 HOKKAIDO · SAPPORO · FOOD RADAR</span>
+    <h1>札幌美食雷達<br>2026 近一年實用版</h1>
+    <p>不只把網紅名店丟給你：這份清單用 2025–2026 新文章、札幌官方旅遊資訊、品牌官方網站與目前商家資料交叉整理，收進正餐、甜點、咖啡、飲料、海鮮與吃到飽。</p>
+    <div class="hero-meta">
+      <span>18 家精選</span><span>8 家初訪優先</span><span>2026/08/12 更新</span><span>附 Google Maps</span>
+    </div>
+    <div class="hero-icons">🍛 🍣 🍨</div>
+  </div>
+</header>
+
+<section class="quick">
+  <div class="wrap">
+    <div class="section-title">
+      <div><h2>第一次去札幌，先抓這 8 家</h2></div>
+      <p>如果餐數有限，我會優先把「札幌感」拉滿，不會全部都排同一類型。</p>
+    </div>
+    <div class="quick-grid">
+      <div class="quick-card"><div class="emoji">🍛</div><h3>GARAKU</h3><p><b>代表性：</b>札幌湯咖哩。香料＋大塊蔬菜，第一餐就很有北海道感。</p></div>
+      <div class="quick-card"><div class="emoji">🍜</div><h3>蝦味拉麵 一幻</h3><p><b>代表性：</b>濃厚海老系。想吃一碗「跟台灣拉麵店不太一樣」的就選它。</p></div>
+      <div class="quick-card"><div class="emoji">🥩</div><h3>成吉思汗 達摩</h3><p><b>代表性：</b>札幌羊肉燒烤。適合安排在薄野夜晚。</p></div>
+      <div class="quick-card"><div class="emoji">🍣</div><h3>根室花丸</h3><p><b>代表性：</b>北海道海鮮壽司。札幌站超方便，但要接受排隊。</p></div>
+      <div class="quick-card"><div class="emoji">🍺</div><h3>札幌啤酒園</h3><p><b>2026 夏季：</b>成吉思汗吃到飽＋啤酒，一次解鎖札幌代表組合。</p></div>
+      <div class="quick-card"><div class="emoji">🍨</div><h3>Parfaiteria PaL</h3><p><b>文化體驗：</b>札幌發祥「締めパフェ」，晚餐後再吃聖代才是完整玩法。</p></div>
+      <div class="quick-card"><div class="emoji">🍦</div><h3>Milk Mura</h3><p><b>特色：</b>冰淇淋配利口酒淋醬，很大人系，也很有記憶點。</p></div>
+      <div class="quick-card"><div class="emoji">🧀</div><h3>KINOTOYA BAKE</h3><p><b>路過必買：</b>現烤起司塔，地下街方便、價格不高、幾乎不用特別繞路。</p></div>
+    </div>
+    <div class="alert"><strong>想少排隊：</strong>不要把所有名店都卡在 12:00–13:30、18:00–20:00。GARAKU、根室花丸、達摩、信玄、一幻這類高熱度店，我會直接當成「可能要排」來安排。</div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-title">
+      <div><h2>完整 18 家｜可直接篩選</h2></div>
+      <p>評分與營業時間為 2026/08/12 查詢時的商家資訊，可能臨時異動；出發前再點 Maps / 官方網站確認一次。</p>
+    </div>
+    <div class="toolbar">
+      <input id="search" class="search" placeholder="搜尋：薄野、甜點、海鮮、GARAKU…">
+      <div class="filters">
+        <button class="active" data-filter="all">全部</button>
+        <button data-filter="pick">⭐ 初訪優先</button>
+        <button data-filter="湯咖哩">湯咖哩</button>
+        <button data-filter="拉麵">拉麵</button>
+        <button data-filter="成吉思汗">成吉思汗</button>
+        <button data-filter="海鮮">海鮮</button>
+        <button data-filter="吃到飽">吃到飽</button>
+        <button data-filter="甜">甜點</button>
+        <button data-filter="咖啡">咖啡／飲料</button>
+      </div>
+    </div>
+    <div class="food-grid" id="foodGrid">
+      
+    <article class="food-card" data-cat="湯咖哩" data-pick="1" data-name="SOUP CURRY GARAKU 札幌本店 スープカレー GARAKU 札幌本店 大通／二條市場">
+      <div class="card-top">
+        <div class="food-icon">🍛</div>
+        <div class="card-heading">
+          <div class="tags"><span class="badge">湯咖哩</span><span class="badge hot">初訪優先</span><span class="badge subtle">大通／二條市場</span></div>
+          <h3>SOUP CURRY GARAKU 札幌本店</h3>
+          <div class="jp">スープカレー GARAKU 札幌本店</div>
+        </div>
+      </div>
+      <div class="score-row">
+        <span>★ 4.3 <small>(5,288 則)</small></span>
+        <span>¥1,000–2,000</span>
+        <span class="risk-high">排隊風險：高</span>
+      </div>
+      <div class="info-grid">
+        <div><b>推薦吃</b><span>雞腿蔬菜湯咖哩</span></div>
+        <div><b>營業參考</b><span>11:30–15:00、17:00–20:30</span></div>
+        <div><b>適合你如果…</b><span>第一次吃札幌湯咖哩、喜歡香料層次</span></div>
+        <div><b>我會提醒</b><span>超熱門；尖峰時段建議預留排隊時間。</span></div>
+      </div>
+      <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=SOUP%20CURRY%20GARAKU%20%E6%9C%AD%E5%B9%8C%E6%9C%AC%E5%BA%97%20Sapporo" target="_blank" rel="noopener">Google Maps ↗</a>
+    </article>
+    
+    <article class="food-card" data-cat="湯咖哩" data-pick="0" data-name="Suage+ スープカレー Suage+ 薄野">
+      <div class="card-top">
+        <div class="food-icon">🍛</div>
+        <div class="card-heading">
+          <div class="tags"><span class="badge">湯咖哩</span><span class="badge subtle">薄野</span></div>
+          <h3>Suage+</h3>
+          <div class="jp">スープカレー Suage+</div>
+        </div>
+      </div>
+      <div class="score-row">
+        <span>★ 4.3 <small>(5,892 則)</small></span>
+        <span>¥1,000–2,000</span>
+        <span class="risk-high">排隊風險：高</span>
+      </div>
+      <div class="info-grid">
+        <div><b>推薦吃</b><span>炙燒雞肉／蔬菜湯咖哩</span></div>
+        <div><b>營業參考</b><span>約 11:00/11:30–20:30/21:00（依星期）</span></div>
+        <div><b>適合你如果…</b><span>想吃湯咖哩，但希望地點就在薄野</span></div>
+        <div><b>我會提醒</b><span>串燒式配料很有辨識度；熱門時段也可能候位。</span></div>
+      </div>
+      <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Suage%2B%20Sapporo" target="_blank" rel="noopener">Google Maps ↗</a>
+    </article>
+    
+    <article class="food-card" data-cat="拉麵" data-pick="1" data-name="蝦味拉麵 一幻 總本店 えびそば一幻 総本店 薄野西側">
+      <div class="card-top">
+        <div class="food-icon">🍜</div>
+        <div class="card-heading">
+          <div class="tags"><span class="badge">拉麵</span><span class="badge hot">初訪優先</span><span class="badge subtle">薄野西側</span></div>
+          <h3>蝦味拉麵 一幻 總本店</h3>
+          <div class="jp">えびそば一幻 総本店</div>
+        </div>
+      </div>
+      <div class="score-row">
+        <span>★ 4.3 <small>(6,209 則)</small></span>
+        <span>¥1,000–2,000</span>
+        <span class="risk-high">排隊風險：高</span>
+      </div>
+      <div class="info-grid">
+        <div><b>推薦吃</b><span>蝦味噌拉麵（えびみそ）</span></div>
+        <div><b>營業參考</b><span>11:00–03:00</span></div>
+        <div><b>適合你如果…</b><span>喜歡濃厚海老香、宵夜</span></div>
+        <div><b>我會提醒</b><span>札幌經典觀光名店，深夜也能吃。</span></div>
+      </div>
+      <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=%E8%9D%A6%E5%91%B3%E6%8B%89%E9%BA%B5%20%E4%B8%80%E5%B9%BB%20%E7%B8%BD%E6%9C%AC%E5%BA%97%20Sapporo" target="_blank" rel="noopener">Google Maps ↗</a>
+    </article>
+    
+    <article class="food-card" data-cat="拉麵" data-pick="0" data-name="信玄拉麵 らーめん信玄 南6条店 薄野西側">
+      <div class="card-top">
+        <div class="food-icon">🍜</div>
+        <div class="card-heading">
+          <div class="tags"><span class="badge">拉麵</span><span class="badge subtle">薄野西側</span></div>
+          <h3>信玄拉麵</h3>
+          <div class="jp">らーめん信玄 南6条店</div>
+        </div>
+      </div>
+      <div class="score-row">
+        <span>★ 4.1 <small>(7,438 則)</small></span>
+        <span>¥1,000–2,000</span>
+        <span class="risk-high">排隊風險：高</span>
+      </div>
+      <div class="info-grid">
+        <div><b>推薦吃</b><span>信州味噌拉麵</span></div>
+        <div><b>營業參考</b><span>11:00–01:00</span></div>
+        <div><b>適合你如果…</b><span>想吃札幌味噌拉麵、重口味</span></div>
+        <div><b>我會提醒</b><span>排隊名店，想省時間可避開晚餐與宵夜尖峰。</span></div>
+      </div>
+      <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=%E4%BF%A1%E7%8E%84%E6%8B%89%E9%BA%B5%20Sapporo" target="_blank" rel="noopener">Google Maps ↗</a>
+    </article>
+    
+    <article class="food-card" data-cat="成吉思汗" data-pick="1" data-name="成吉思汗 達摩 本店 成吉思汗 だるま 本店 薄野">
+      <div class="card-top">
+        <div class="food-icon">🥩</div>
+        <div class="card-heading">
+          <div class="tags"><span class="badge">成吉思汗</span><span class="badge hot">初訪優先</span><span class="badge subtle">薄野</span></div>
+          <h3>成吉思汗 達摩 本店</h3>
+          <div class="jp">成吉思汗 だるま 本店</div>
+        </div>
+      </div>
+      <div class="score-row">
+        <span>★ 4.0 <small>(3,204 則)</small></span>
+        <span>¥2,000–6,000</span>
+        <span class="risk-high">排隊風險：高</span>
+      </div>
+      <div class="info-grid">
+        <div><b>推薦吃</b><span>成吉思汗羊肉＋洋蔥</span></div>
+        <div><b>營業參考</b><span>17:00–05:00</span></div>
+        <div><b>適合你如果…</b><span>第一次體驗札幌羊肉燒烤、夜貓族</span></div>
+        <div><b>我會提醒</b><span>本店很有代表性，也有多家分店可分流。</span></div>
+      </div>
+      <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=%E6%88%90%E5%90%89%E6%80%9D%E6%B1%97%20%E9%81%94%E6%91%A9%20%E6%9C%AC%E5%BA%97%20Sapporo" target="_blank" rel="noopener">Google Maps ↗</a>
+    </article>
+    
+    <article class="food-card" data-cat="吃到飽" data-pick="1" data-name="札幌啤酒園 サッポロビール園 苗穗／札幌站東側">
+      <div class="card-top">
+        <div class="food-icon">♨️</div>
+        <div class="card-heading">
+          <div class="tags"><span class="badge">吃到飽</span><span class="badge hot">初訪優先</span><span class="badge subtle">苗穗／札幌站東側</span></div>
+          <h3>札幌啤酒園</h3>
+          <div class="jp">サッポロビール園</div>
+        </div>
+      </div>
+      <div class="score-row">
+        <span>★ 4.2 <small>(8,470 則)</small></span>
+        <span>約 ¥4,500 起</span>
+        <span class="risk-mid">排隊風險：中</span>
+      </div>
+      <div class="info-grid">
+        <div><b>推薦吃</b><span>成吉思汗＋札幌生啤酒</span></div>
+        <div><b>營業參考</b><span>常設餐廳約 11:30–21:00；夏季 Beer Garden 另有時段</span></div>
+        <div><b>適合你如果…</b><span>多人、想一次吃羊肉＋喝啤酒＋拍紅磚建築</span></div>
+        <div><b>我會提醒</b><span>2026 夏季 Beer Garden 6/12–10/12；100 分鐘吃到飽 ¥4,500，+¥1,500 可升級酒精暢飲。</span></div>
+      </div>
+      <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=%E6%9C%AD%E5%B9%8C%E5%95%A4%E9%85%92%E5%9C%92%20Sapporo" target="_blank" rel="noopener">Google Maps ↗</a>
+    </article>
+    
+    <article class="food-card" data-cat="壽司／海鮮" data-pick="1" data-name="迴轉壽司 根室花丸 JR Tower店 回転寿司 根室花まる JRタワーステラプレイス店 札幌站">
+      <div class="card-top">
+        <div class="food-icon">🍣</div>
+        <div class="card-heading">
+          <div class="tags"><span class="badge">壽司／海鮮</span><span class="badge hot">初訪優先</span><span class="badge subtle">札幌站</span></div>
+          <h3>迴轉壽司 根室花丸 JR Tower店</h3>
+          <div class="jp">回転寿司 根室花まる JRタワーステラプレイス店</div>
+        </div>
+      </div>
+      <div class="score-row">
+        <span>★ 4.1 <small>(3,905 則)</small></span>
+        <span>¥2,000–3,000</span>
+        <span class="risk-high">排隊風險：高</span>
+      </div>
+      <div class="info-grid">
+        <div><b>推薦吃</b><span>當季北海道握壽司、花咲蟹相關品項（依供應）</span></div>
+        <div><b>營業參考</b><span>11:00–22:00</span></div>
+        <div><b>適合你如果…</b><span>住札幌站附近、想吃高人氣迴轉壽司</span></div>
+        <div><b>我會提醒</b><span>超方便但也很熱門；若隊伍太長可看 miredo 分店。</span></div>
+      </div>
+      <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=%E8%BF%B4%E8%BD%89%E5%A3%BD%E5%8F%B8%20%E6%A0%B9%E5%AE%A4%E8%8A%B1%E4%B8%B8%20JR%20Tower%E5%BA%97%20Sapporo" target="_blank" rel="noopener">Google Maps ↗</a>
+    </article>
+    
+    <article class="food-card" data-cat="海鮮丼" data-pick="0" data-name="Donburi Chaya 二條市場店 どんぶり茶屋 二条市場店 二條市場">
+      <div class="card-top">
+        <div class="food-icon">🐟</div>
+        <div class="card-heading">
+          <div class="tags"><span class="badge">海鮮丼</span><span class="badge subtle">二條市場</span></div>
+          <h3>Donburi Chaya 二條市場店</h3>
+          <div class="jp">どんぶり茶屋 二条市場店</div>
+        </div>
+      </div>
+      <div class="score-row">
+        <span>★ 4.0 <small>(1,266 則)</small></span>
+        <span>¥2,000–3,000</span>
+        <span class="risk-mid">排隊風險：中</span>
+      </div>
+      <div class="info-grid">
+        <div><b>推薦吃</b><span>海膽／鮭魚卵／綜合海鮮丼</span></div>
+        <div><b>營業參考</b><span>07:30–17:00</span></div>
+        <div><b>適合你如果…</b><span>早餐就想吃海鮮、二條市場順遊</span></div>
+        <div><b>我會提醒</b><span>早上開門，適合把海鮮丼直接當早餐。</span></div>
+      </div>
+      <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Donburi%20Chaya%20%E4%BA%8C%E6%A2%9D%E5%B8%82%E5%A0%B4%E5%BA%97%20Sapporo" target="_blank" rel="noopener">Google Maps ↗</a>
+    </article>
+    
+    <article class="food-card" data-cat="螃蟹／和食" data-pick="0" data-name="札幌螃蟹本家 札幌站前本店 札幌かに本家 札幌駅前本店 札幌站">
+      <div class="card-top">
+        <div class="food-icon">🦀</div>
+        <div class="card-heading">
+          <div class="tags"><span class="badge">螃蟹／和食</span><span class="badge subtle">札幌站</span></div>
+          <h3>札幌螃蟹本家 札幌站前本店</h3>
+          <div class="jp">札幌かに本家 札幌駅前本店</div>
+        </div>
+      </div>
+      <div class="score-row">
+        <span>★ 4.1 <small>(1,769 則)</small></span>
+        <span>¥10,000+</span>
+        <span class="risk-mid">排隊風險：中</span>
+      </div>
+      <div class="info-grid">
+        <div><b>推薦吃</b><span>帝王蟹／毛蟹套餐</span></div>
+        <div><b>營業參考</b><span>11:30–22:00</span></div>
+        <div><b>適合你如果…</b><span>想吃正式螃蟹宴、慶祝型正餐</span></div>
+        <div><b>我會提醒</b><span>價格高，但比吃到飽更偏完整會席體驗。</span></div>
+      </div>
+      <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=%E6%9C%AD%E5%B9%8C%E8%9E%83%E8%9F%B9%E6%9C%AC%E5%AE%B6%20%E6%9C%AD%E5%B9%8C%E7%AB%99%E5%89%8D%E6%9C%AC%E5%BA%97%20Sapporo" target="_blank" rel="noopener">Google Maps ↗</a>
+    </article>
+    
+    <article class="food-card" data-cat="吃到飽" data-pick="0" data-name="海鮮自助餐 難陀 NANDA 海鮮バイキング 難陀 薄野">
+      <div class="card-top">
+        <div class="food-icon">♨️</div>
+        <div class="card-heading">
+          <div class="tags"><span class="badge">吃到飽</span><span class="badge subtle">薄野</span></div>
+          <h3>海鮮自助餐 難陀 NANDA</h3>
+          <div class="jp">海鮮バイキング 難陀</div>
+        </div>
+      </div>
+      <div class="score-row">
+        <span>★ 3.5 <small>(3,395 則)</small></span>
+        <span>¥9,000+</span>
+        <span class="risk-mid">排隊風險：中</span>
+      </div>
+      <div class="info-grid">
+        <div><b>推薦吃</b><span>螃蟹、海鮮燒烤、生魚片等自助品項</span></div>
+        <div><b>營業參考</b><span>15:00–21:00</span></div>
+        <div><b>適合你如果…</b><span>目標明確：一次把北海道海鮮吃到飽</span></div>
+        <div><b>我會提醒</b><span>重點是「量與種類」而非精緻單點；價格與方案務必訂位前再確認。</span></div>
+      </div>
+      <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=%E6%B5%B7%E9%AE%AE%E8%87%AA%E5%8A%A9%E9%A4%90%20%E9%9B%A3%E9%99%80%20NANDA%20Sapporo" target="_blank" rel="noopener">Google Maps ↗</a>
+    </article>
+    
+    <article class="food-card" data-cat="夜聖代" data-pick="1" data-name="Parfaiteria PaL パフェテリア パル 薄野">
+      <div class="card-top">
+        <div class="food-icon">🍨</div>
+        <div class="card-heading">
+          <div class="tags"><span class="badge">夜聖代</span><span class="badge hot">初訪優先</span><span class="badge subtle">薄野</span></div>
+          <h3>Parfaiteria PaL</h3>
+          <div class="jp">パフェテリア パル</div>
+        </div>
+      </div>
+      <div class="score-row">
+        <span>★ 4.3 <small>(1,393 則)</small></span>
+        <span>¥2,000–3,000</span>
+        <span class="risk-high">排隊風險：高</span>
+      </div>
+      <div class="info-grid">
+        <div><b>推薦吃</b><span>季節水果夜聖代</span></div>
+        <div><b>營業參考</b><span>18:00–00:00；五六至 02:00</span></div>
+        <div><b>適合你如果…</b><span>想體驗札幌發祥「締めパフェ」文化</span></div>
+        <div><b>我會提醒</b><span>適合吃完晚餐再去；造型精緻，熱門時間可能排隊。</span></div>
+      </div>
+      <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Parfaiteria%20PaL%20Sapporo" target="_blank" rel="noopener">Google Maps ↗</a>
+    </article>
+    
+    <article class="food-card" data-cat="冰淇淋／甜點酒" data-pick="1" data-name="Milk Mura ミルク村 薄野">
+      <div class="card-top">
+        <div class="food-icon">🍦</div>
+        <div class="card-heading">
+          <div class="tags"><span class="badge">冰淇淋／甜點酒</span><span class="badge hot">初訪優先</span><span class="badge subtle">薄野</span></div>
+          <h3>Milk Mura</h3>
+          <div class="jp">ミルク村</div>
+        </div>
+      </div>
+      <div class="score-row">
+        <span>★ 4.4 <small>(887 則)</small></span>
+        <span>約 ¥1,000–2,000</span>
+        <span class="risk-mid">排隊風險：中</span>
+      </div>
+      <div class="info-grid">
+        <div><b>推薦吃</b><span>香草冰淇淋＋多款利口酒淋醬</span></div>
+        <div><b>營業參考</b><span>多數日 13:00–23:00；週三 17:00–23:00</span></div>
+        <div><b>適合你如果…</b><span>想吃很札幌、又有點大人系的甜點</span></div>
+        <div><b>我會提醒</b><span>不是一般冰淇淋店，特色是把利口酒少量淋在冰淇淋上搭配。</span></div>
+      </div>
+      <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Milk%20Mura%20Sapporo" target="_blank" rel="noopener">Google Maps ↗</a>
+    </article>
+    
+    <article class="food-card" data-cat="咖啡／飲料" data-pick="1" data-name="BARISTART COFFEE バリスタート コーヒー 大通">
+      <div class="card-top">
+        <div class="food-icon">☕</div>
+        <div class="card-heading">
+          <div class="tags"><span class="badge">咖啡／飲料</span><span class="badge hot">初訪優先</span><span class="badge subtle">大通</span></div>
+          <h3>BARISTART COFFEE</h3>
+          <div class="jp">バリスタート コーヒー</div>
+        </div>
+      </div>
+      <div class="score-row">
+        <span>★ 4.1 <small>(1,461 則)</small></span>
+        <span>～¥1,000</span>
+        <span class="risk-mid">排隊風險：中</span>
+      </div>
+      <div class="info-grid">
+        <div><b>推薦吃</b><span>北海道牛奶拿鐵</span></div>
+        <div><b>營業參考</b><span>10:00–18:00</span></div>
+        <div><b>適合你如果…</b><span>想喝出北海道牛奶差異、逛大通順路</span></div>
+        <div><b>我會提醒</b><span>座位不多，定位更像快速喝一杯的咖啡站。</span></div>
+      </div>
+      <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=BARISTART%20COFFEE%20Sapporo" target="_blank" rel="noopener">Google Maps ↗</a>
+    </article>
+    
+    <article class="food-card" data-cat="咖啡／甜點" data-pick="0" data-name="森彥咖啡 森彦 圓山">
+      <div class="card-top">
+        <div class="food-icon">☕</div>
+        <div class="card-heading">
+          <div class="tags"><span class="badge">咖啡／甜點</span><span class="badge subtle">圓山</span></div>
+          <h3>森彥咖啡</h3>
+          <div class="jp">森彦</div>
+        </div>
+      </div>
+      <div class="score-row">
+        <span>★ 4.3 <small>(1,655 則)</small></span>
+        <span>¥1,000–2,000</span>
+        <span class="risk-mid">排隊風險：中</span>
+      </div>
+      <div class="info-grid">
+        <div><b>推薦吃</b><span>手沖咖啡＋蛋糕</span></div>
+        <div><b>營業參考</b><span>09:00–19:00</span></div>
+        <div><b>適合你如果…</b><span>喜歡老屋咖啡、想安排一個慢下午</span></div>
+        <div><b>我會提醒</b><span>離札幌站／薄野較遠，但氛圍派很值得專程排。</span></div>
+      </div>
+      <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=%E6%A3%AE%E5%BD%A5%E5%92%96%E5%95%A1%20Sapporo" target="_blank" rel="noopener">Google Maps ↗</a>
+    </article>
+    
+    <article class="food-card" data-cat="甜點" data-pick="1" data-name="KINOTOYA BAKE Pole Town きのとや BAKE ポールタウン店 大通／薄野地下街">
+      <div class="card-top">
+        <div class="food-icon">🧀</div>
+        <div class="card-heading">
+          <div class="tags"><span class="badge">甜點</span><span class="badge hot">初訪優先</span><span class="badge subtle">大通／薄野地下街</span></div>
+          <h3>KINOTOYA BAKE Pole Town</h3>
+          <div class="jp">きのとや BAKE ポールタウン店</div>
+        </div>
+      </div>
+      <div class="score-row">
+        <span>★ 4.6 <small>(1,179 則)</small></span>
+        <span>～¥1,000</span>
+        <span class="risk-low">排隊風險：低</span>
+      </div>
+      <div class="info-grid">
+        <div><b>推薦吃</b><span>現烤起司塔</span></div>
+        <div><b>營業參考</b><span>10:00–21:00</span></div>
+        <div><b>適合你如果…</b><span>想吃北海道乳製品甜點、逛街順便買</span></div>
+        <div><b>我會提醒</b><span>2026/8 官方型錄仍有現烤起司塔；外帶非常方便。</span></div>
+      </div>
+      <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=KINOTOYA%20BAKE%20Pole%20Town%20Sapporo" target="_blank" rel="noopener">Google Maps ↗</a>
+    </article>
+    
+    <article class="food-card" data-cat="甜點／伴手禮" data-pick="0" data-name="六花亭 札幌本店 六花亭 札幌本店 札幌站">
+      <div class="card-top">
+        <div class="food-icon">🎁</div>
+        <div class="card-heading">
+          <div class="tags"><span class="badge">甜點／伴手禮</span><span class="badge subtle">札幌站</span></div>
+          <h3>六花亭 札幌本店</h3>
+          <div class="jp">六花亭 札幌本店</div>
+        </div>
+      </div>
+      <div class="score-row">
+        <span>★ 4.3 <small>(4,259 則)</small></span>
+        <span>¥1,000–2,000</span>
+        <span class="risk-mid">排隊風險：中</span>
+      </div>
+      <div class="info-grid">
+        <div><b>推薦吃</b><span>奶油夾心餅乾、店內甜點</span></div>
+        <div><b>營業參考</b><span>10:00–16:00</span></div>
+        <div><b>適合你如果…</b><span>伴手禮＋咖啡甜點一起解決</span></div>
+        <div><b>我會提醒</b><span>營業時間偏早，別把它排成晚餐後甜點。</span></div>
+      </div>
+      <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=%E5%85%AD%E8%8A%B1%E4%BA%AD%20%E6%9C%AD%E5%B9%8C%E6%9C%AC%E5%BA%97%20Sapporo" target="_blank" rel="noopener">Google Maps ↗</a>
+    </article>
+    
+    <article class="food-card" data-cat="甜點／咖啡" data-pick="0" data-name="SIROYA 菓子と喫茶 SIROYA 大通">
+      <div class="card-top">
+        <div class="food-icon">🥞</div>
+        <div class="card-heading">
+          <div class="tags"><span class="badge">甜點／咖啡</span><span class="badge subtle">大通</span></div>
+          <h3>SIROYA</h3>
+          <div class="jp">菓子と喫茶 SIROYA</div>
+        </div>
+      </div>
+      <div class="score-row">
+        <span>★ 4.3 <small>(171 則)</small></span>
+        <span>¥1,000–2,000</span>
+        <span class="risk-low">排隊風險：低</span>
+      </div>
+      <div class="info-grid">
+        <div><b>推薦吃</b><span>白色戀人霜淇淋聖代、ISHIYA Pancake</span></div>
+        <div><b>營業參考</b><span>平日 08:00–19:00；六日祝 10:00–19:00</span></div>
+        <div><b>適合你如果…</b><span>想吃白色戀人系甜點，但不想跑白色戀人公園</span></div>
+        <div><b>我會提醒</b><span>大通站旁地下樓層，行程很好塞。</span></div>
+      </div>
+      <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=SIROYA%20Sapporo" target="_blank" rel="noopener">Google Maps ↗</a>
+    </article>
+    
+    <article class="food-card" data-cat="冰淇淋／聖代" data-pick="0" data-name="雪印冰淇淋 札幌本店 雪印パーラー 札幌本店 札幌站">
+      <div class="card-top">
+        <div class="food-icon">🍦</div>
+        <div class="card-heading">
+          <div class="tags"><span class="badge">冰淇淋／聖代</span><span class="badge subtle">札幌站</span></div>
+          <h3>雪印冰淇淋 札幌本店</h3>
+          <div class="jp">雪印パーラー 札幌本店</div>
+        </div>
+      </div>
+      <div class="score-row">
+        <span>★ 4.1 <small>(2,143 則)</small></span>
+        <span>約 ¥1,000–2,000</span>
+        <span class="risk-mid">排隊風險：中</span>
+      </div>
+      <div class="info-grid">
+        <div><b>推薦吃</b><span>北海道牛乳冰淇淋／經典聖代</span></div>
+        <div><b>營業參考</b><span>10:00–19:00</span></div>
+        <div><b>適合你如果…</b><span>想吃老字號北海道乳製品甜點</span></div>
+        <div><b>我會提醒</b><span>札幌站與時計台動線都方便，適合白天補甜。</span></div>
+      </div>
+      <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=%E9%9B%AA%E5%8D%B0%E5%86%B0%E6%B7%87%E6%B7%8B%20%E6%9C%AD%E5%B9%8C%E6%9C%AC%E5%BA%97%20Sapporo" target="_blank" rel="noopener">Google Maps ↗</a>
+    </article>
+    
+    </div>
+  </div>
+</section>
+
+<section class="summer">
+  <div class="wrap">
+    <div class="section-title">
+      <div><h2>2026 夏季限定：現在去特別值得</h2></div>
+      <p>這兩個是 2026 官方最新資訊，不是多年以前的舊攻略。</p>
+    </div>
+    <div class="summer-grid">
+      <article class="feature">
+        <span class="badge hot">6/12–10/12</span>
+        <h3>札幌啤酒園 Beer Garden</h3>
+        <div class="price">¥4,500 / 100 分鐘</div>
+        <p>含軟性飲料吧的成吉思汗吃到飽；成人加 ¥1,500 可升級酒精飲料喝到飽。平日 16:00–21:00、六日祝 12:00–21:00。戶外＋紅磚氛圍很適合夏天。</p>
+        <div class="big">🍺</div>
+      </article>
+      <article class="feature alt">
+        <span class="badge hot">8/14–9/6</span>
+        <h3>白色戀人 × 動物森友會 限定罐</h3>
+        <div class="price">¥4,600</div>
+        <p>大丸札幌店 7F Nintendo POP-UP STORE 限定販售「白色戀人 36 枚入」合作罐，數量有限、售完即止。吃的同時也是很有時效性的伴手禮。</p>
+        <div class="big">🍪</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="method">
+  <div class="wrap">
+    <div class="section-title">
+      <div><h2>這份清單怎麼選的？</h2></div>
+      <p>「近一年」不是只看文章發布日，而是把近期推薦、官方仍在營業／更新、札幌代表性三件事一起看。</p>
+    </div>
+    <div class="method-grid">
+      <div class="method-card">
+        <h3>篩選邏輯</h3>
+        <ul>
+          <li>優先參考 2025–2026 發布或更新的札幌美食、咖啡整理。</li>
+          <li>再用札幌官方觀光網站確認「湯咖哩、成吉思汗、味噌拉麵、海鮮、締めパフェ」確實是札幌核心飲食文化。</li>
+          <li>用目前商家資料確認店還在、位置與營業時間大致有效。</li>
+          <li>熱門不是唯一標準：也保留「好塞行程」與「體驗很特別」的店。</li>
+        </ul>
+      </div>
+      <div class="method-card">
+        <h3>我會怎麼分配一整天</h3>
+        <ul>
+          <li><b>早餐：</b>二條市場海鮮丼 / SIROYA。</li>
+          <li><b>午餐：</b>GARAKU / Suage+ 湯咖哩。</li>
+          <li><b>下午：</b>BARISTART、森彥、六花亭、KINOTOYA 擇一。</li>
+          <li><b>晚餐：</b>達摩 / 札幌啤酒園 / 根室花丸。</li>
+          <li><b>宵夜：</b>Parfaiteria PaL 或 Milk Mura；還餓再上一幻。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-title">
+      <div><h2>主要參考來源</h2></div>
+      <p>建議把「店家即時營業狀況」放在出發前最後一刻確認，因為日本店家臨時休業並不少見。</p>
+    </div>
+    <div class="sources"><a href="https://visit.sapporo.travel/discover/cuisine/" target="_blank" rel="noopener">Visit Sapporo｜Cuisine（官方）<span>↗</span></a>
+<a href="https://visit.sapporo.travel/tw/discover/cuisine/soup-curry/" target="_blank" rel="noopener">Visit Sapporo｜湯咖哩（官方繁中）<span>↗</span></a>
+<a href="https://visit.sapporo.travel/tw/discover/cuisine/shime-parfait/" target="_blank" rel="noopener">Visit Sapporo｜結尾聖代（官方繁中）<span>↗</span></a>
+<a href="https://sapporo-bier-garten.jp/beer-garden/" target="_blank" rel="noopener">札幌啤酒園｜2026 Beer Garden（官方）<span>↗</span></a>
+<a href="https://sapporo-bier-garten.jp/information/22389/" target="_blank" rel="noopener">札幌啤酒園｜2026/6/10 最新公告（官方）<span>↗</span></a>
+<a href="https://www.kinotoya.com/" target="_blank" rel="noopener">KINOTOYA｜2026 最新消息（官方）<span>↗</span></a>
+<a href="https://www.ishiya.co.jp/shop/005716.html" target="_blank" rel="noopener">ISHIYA｜SIROYA 店舖資訊（官方）<span>↗</span></a>
+<a href="https://natasha-traveler.tw/sapporo-food-guide/" target="_blank" rel="noopener">2026 最新札幌 23 間美食整理<span>↗</span></a>
+<a href="https://todolist-japan.com/zh/sapporo-cafe-guide/" target="_blank" rel="noopener">2026 札幌咖啡 21 選<span>↗</span></a>
+<a href="https://dorarichlife.com/sapporo-must-eat/" target="_blank" rel="noopener">2025 札幌美食：湯咖哩／海鮮／成吉思汗<span>↗</span></a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">札幌美食雷達 2026 · 資料整理時間：2026/08/12。Google 商家評分、評論數、價格帶與營業時間會變動；本頁作為選店與排行程參考。</div>
+</footer>
+
+<script>
+const buttons=[...document.querySelectorAll('.filters button')];
+const cards=[...document.querySelectorAll('.food-card')];
+const search=document.getElementById('search');
+let active='all';
+
+function match(card){
+  const q=search.value.trim().toLowerCase();
+  const cat=card.dataset.cat;
+  const name=card.dataset.name.toLowerCase();
+  let ok=true;
+  if(active==='pick') ok=card.dataset.pick==='1';
+  else if(active==='海鮮') ok=cat.includes('海鮮')||cat.includes('壽司')||cat.includes('螃蟹');
+  else if(active==='甜') ok=cat.includes('甜')||cat.includes('冰淇淋')||cat.includes('聖代');
+  else if(active==='咖啡') ok=cat.includes('咖啡')||cat.includes('飲料');
+  else if(active!=='all') ok=cat.includes(active);
+  if(q) ok=ok && (name.includes(q)||cat.toLowerCase().includes(q));
+  return ok;
+}
+function render(){cards.forEach(c=>c.classList.toggle('hidden',!match(c)));}
+buttons.forEach(b=>b.addEventListener('click',()=>{
+  buttons.forEach(x=>x.classList.remove('active'));
+  b.classList.add('active'); active=b.dataset.filter; render();
+}));
+search.addEventListener('input',render);
+</script>
+</body>
+</html>
